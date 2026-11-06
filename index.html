@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090806">
+<title>BABY-MAX</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900;1000&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090806;--gold:#f3d17e;--cream:#fff7e4;--muted:#c0b49b;--line:rgba(243,209,126,.25);--font:"Nunito",Arial,sans-serif}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at 50% -10%,#48351a 0,transparent 48%),var(--bg);color:var(--cream);font-family:var(--font);line-height:1.55}
+.wrap{width:min(1050px,calc(100% - 32px));margin:auto}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.brand{font-weight:1000;letter-spacing:.08em}
+nav a{color:var(--muted);text-decoration:none;font-size:.85rem;margin-left:14px}
+.gold{background:linear-gradient(110deg,#fff2bd,#bd8629,#fff1b4,#d9a944,#fff8d9,#b77b20);background-size:250% auto;color:transparent;background-clip:text;-webkit-background-clip:text;animation:goldFlow 5s linear infinite}
+@keyframes goldFlow{to{background-position:250% center}}
+.hero{min-height:76vh;display:grid;place-items:center;text-align:center;padding:65px 0}
+h1{font-size:clamp(3.4rem,12vw,8rem);font-weight:1000;line-height:1;margin:0 0 22px;letter-spacing:.01em;cursor:pointer}
+.status{font-size:clamp(1.1rem,3.5vw,1.6rem);font-weight:1000;letter-spacing:.22em}
+.date{color:var(--gold);font-weight:900;letter-spacing:.2em;margin-top:9px}
+.tap{font-size:.75rem;color:var(--muted);letter-spacing:.12em;margin-top:22px}
+section{padding:65px 0;border-top:1px solid var(--line)}
+.head{text-align:center;margin-bottom:30px}
+.kicker{font-size:.72rem;color:var(--gold);font-weight:900;letter-spacing:.25em;text-transform:uppercase}
+h2{font-size:clamp(2rem,6vw,3.3rem);font-weight:1000;line-height:1.1;margin:8px 0}
+.sub{color:var(--muted);max-width:600px;margin:0 auto}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.story,.game{border:1px solid var(--line);border-radius:20px;padding:24px;background:linear-gradient(145deg,#1c1710,#100e0b)}
+.story small{color:var(--gold);font-weight:900;letter-spacing:.18em}
+.story h3,.game h3{font-size:1.35rem;font-weight:1000;margin:8px 0}
+.story p,.game p{color:var(--muted);margin:0}
+.naam{border:1px solid var(--line);border-radius:22px;text-align:center;padding:35px 15px;background:radial-gradient(ellipse,#392a15,transparent 75%)}
+.naam h2{font-size:clamp(2.5rem,8vw,4.8rem);letter-spacing:.04em}
+.soon{color:var(--gold);font-weight:1000;letter-spacing:.3em}
+#creditsStage{height:470px;max-width:760px;margin:auto;position:relative;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:radial-gradient(ellipse at 50% 40%,#453119,#100d08 70%);isolation:isolate}
+#creditsStage:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 65%,#090806 100%);z-index:2}
+.roll{position:absolute;top:100%;left:0;width:100%;padding:20px 22px 60px;text-align:center;animation:creditsRoll 34s linear infinite}
+@keyframes creditsRoll{from{transform:translateY(0)}to{transform:translateY(-175%)}}
+.credit-block{margin:0 auto 30px}
+.role{color:var(--gold);font-size:.75rem;font-weight:1000;letter-spacing:.25em;text-transform:uppercase;margin-bottom:8px}
+.name{font-size:1.1rem;font-weight:900;margin:5px;color:#fff4d8}
+.name.big{font-size:1.55rem}
+.name-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px 10px}
+.game-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.memory{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:16px}
+.memory button{height:58px;border:1px solid var(--line);border-radius:12px;background:#302513;color:var(--gold);font:900 1.5rem var(--font);cursor:pointer}
+.memory button:disabled{opacity:1;background:#493719}
+.btn{border:1px solid var(--line);background:#382a16;color:#fff0c7;padding:10px 16px;border-radius:99px;font:900 .9rem var(--font);cursor:pointer;margin-top:14px}
+.btn:active,.memory button:active{transform:scale(.97)}
+.score{color:var(--gold);font-weight:900;font-size:.9rem;margin-top:10px}
+.arena{height:145px;border:1px dashed var(--line);border-radius:14px;position:relative;overflow:hidden;background:#0b0906;margin-top:16px}
+#star{position:absolute;display:none;border:0;background:transparent;font-size:2rem;cursor:pointer;transform:translate(-50%,-50%);padding:4px}
+footer{text-align:center;padding:35px 0 45px;color:#8e826b;font-size:.8rem}
+@media(max-width:650px){.cards,.game-grid{grid-template-columns:1fr}.name-grid{grid-template-columns:repeat(2,1fr)}#creditsStage{height:430px}nav a{margin-left:8px;font-size:.78rem}}
+@media(prefers-reduced-motion:reduce){.roll,.gold{animation-duration:.01ms;animation-iteration-count:1}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><div class="brand gold">BABY-MAX</div><div><a href="#stories">Stories</a><a href="#games">Games</a><a href="#cast">Cast &amp; Crew</a></div></nav>
+<header class="hero">
+  <div>
+    <h1 class="gold" id="title">BABY-MAX</h1>
+    <div class="status">EVENT ENDED</div>
+    <div class="date">30 | 10 | 2026</div>
+    <div class="tap">TAP THE TITLE TO CHANGE ITS GOLD COLOUR</div>
+  </div>
+</header>
+
+<section id="stories">
+  <div class="head"><div class="kicker">Little chapters</div><h2>Stories to keep</h2><p class="sub">A few little chapters from a day filled with love, family and happy memories.</p></div>
+  <div class="cards">
+    <article class="story"><small>CHAPTER 01</small><h3>The Beginning</h3><p>A beautiful new chapter began, surrounded by warmth, blessings and love.</p></article>
+    <article class="story"><small>CHAPTER 02</small><h3>Family Together</h3><p>Different generations came together to celebrate one special moment.</p></article>
+    <article class="story"><small>CHAPTER 03</small><h3>Little Moments</h3><p>Smiles, laughter and tiny details became memories to treasure.</p></article>
+    <article class="story"><small>CHAPTER 04</small><h3>A Golden Keepsake</h3><p>The celebration ended, but the photographs and memories will stay.</p></article>
+    <article class="story"><small>CHAPTER 05</small><h3>Made With Love</h3><p>Every person who joined helped make this day feel special.</p></article>
+    <article class="story"><small>CHAPTER 06</small><h3>To Be Continued</h3><p>This chapter is complete, but many beautiful memories are still ahead.</p></article>
+  </div>
+</section>
+
+<section id="games">
+  <div class="head"><div class="kicker">Play time</div><h2>Mini Games</h2><p class="sub">Both games work right here on the page — no extra app needed.</p></div>
+  <div class="game-grid">
+    <div class="game">
+      <h3>Golden Memory Match</h3><p>Find all eight matching pairs.</p>
+      <div class="memory" id="memory"></div>
+      <div class="score" id="memoryScore" aria-live="polite">Moves: 0 · Pairs: 0/8</div>
+      <button class="btn" id="resetMemory" type="button">Restart game</button>
+    </div>
+    <div class="game">
+      <h3>Catch the Star</h3><p>Tap the moving star as many times as you can in 15 seconds.</p>
+      <div class="arena" id="arena"><button id="star" type="button" aria-label="Catch star">⭐</button></div>
+      <div class="score" id="starScore" aria-live="polite">Score: 0 · Time: 15s</div>
+      <button class="btn" id="startStar" type="button">Start game</button>
+    </div>
+  </div>
+</section>
+
+<section id="naam"><div class="naam"><div class="soon">COMING SOON</div><h2 class="gold">NAAM KARAN</h2><div class="soon">SOON..</div></div></section>
+
+<section id="cast">
+  <div class="head"><div class="kicker">The people behind the memories</div><h2>Cast &amp; <span class="gold">Crew</span></h2><p class="sub">The credits roll automatically when this section comes into view.</p></div>
+  <div id="creditsStage">
+    <div class="roll">
+      <div class="credit-block"><div class="role">A BABY-MAX Celebration</div><div class="name big">A story made with love</div></div>
+      <div class="credit-block"><div class="role">Starring</div><div class="name big">Rahul</div><div class="name big">Haritha</div></div>
+      <div class="credit-block"><div class="role">Featuring the Family</div><div class="name-grid">
+        <div class="name">Shobna</div><div class="name">Sunny</div><div class="name">Sumin</div>
+        <div class="name">Sumin's Wife</div><div class="name">Aditya</div><div class="name">Seena</div>
+        <div class="name">Ezza</div><div class="name">Hemant</div><div class="name">Bindu</div>
+        <div class="name">Gurjit</div><div class="name">Amala</div><div class="name">Jasmit</div>
+        <div class="name">Jaiya</div><div class="name">Deepak</div><div class="name">Deepa</div>
+        <div class="name">Rathi</div><div class="name">Rajeev</div><div class="name">Ravi</div>
+        <div class="name">Sijil</div><div class="name">Harjit</div><div class="name">Manthan</div>
+      </div></div>
+      <div class="credit-block"><div class="role">Direction &amp; Editing</div><div class="name big">Manthan</div></div>
+      <div class="credit-block"><div class="role">With love</div><div class="name big gold">BABY-MAX</div></div>
+    </div>
+  </div>
+</section>
+<footer>BABY-MAX · Made with love and memories.</footer>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Tap the title to cycle through gold shades.
+  const title = document.getElementById('title');
+  const goldSets = [
+    ['#fff2bd','#bd8629','#fff1b4','#d9a944','#fff8d9','#b77b20'],
+    ['#fff5d9','#e2b84e','#fff9df','#b98525','#f5d98b','#d49a35'],
+    ['#fff0c2','#a8792b','#f8d98b','#e7bd59','#fff7df','#9d6b1d'],
+    ['#fff6d9','#d4a64a','#fff0b8','#c38b32','#fff9e7','#e4bd69']
+  ];
+  let shade = 0;
+  title.addEventListener('click', function () {
+    shade = (shade + 1) % goldSets.length;
+    const gradient = 'linear-gradient(110deg,' + goldSets[shade].join(',') + ')';
+    document.querySelectorAll('.gold').forEach(el => el.style.backgroundImage = gradient);
+  });
+
+  // Memory matching game.
+  const memory = document.getElementById('memory');
+  const memoryScore = document.getElementById('memoryScore');
+  const icons = ['🌟','🎈','🎁','🧸','🌙','🎀','🍼','💛'];
+  let firstCard = null, locked = false, moves = 0, pairs = 0, mismatchTimer = null;
+  function newMemoryGame() {
+    clearTimeout(mismatchTimer);
+    memory.innerHTML = '';
+    firstCard = null; locked = false; moves = 0; pairs = 0;
+    const deck = icons.concat(icons).sort(() => Math.random() - 0.5);
+    deck.forEach((symbol, i) => {
+      const card = document.createElement('button');
+      card.type = 'button'; card.textContent = '?'; card.dataset.symbol = symbol;
+      card.setAttribute('aria-label', 'Hidden card ' + (i + 1));
+      card.addEventListener('click', function () {
+        if (locked || card.disabled || card === firstCard) return;
+        card.textContent = symbol;
+        if (!firstCard) { firstCard = card; return; }
+        moves++;
+        const previous = firstCard;
+        firstCard = null;
+        if (previous.dataset.symbol === card.dataset.symbol) {
+          previous.disabled = true; card.disabled = true; pairs++;
+          memoryScore.textContent = pairs === 8 ? 'You found every pair! 🎉 Moves: ' + moves : 'Moves: ' + moves + ' · Pairs: ' + pairs + '/8';
+        } else {
+          locked = true;
+          memoryScore.textContent = 'Moves: ' + moves + ' · Pairs: ' + pairs + '/8';
+          mismatchTimer = setTimeout(function () {
+            previous.textContent = '?'; card.textContent = '?'; locked = false;
+          }, 650);
+        }
+      });
+      memory.appendChild(card);
+    });
+    memoryScore.textContent = 'Moves: 0 · Pairs: 0/8';
+  }
+  document.getElementById('resetMemory').addEventListener('click', newMemoryGame);
+  newMemoryGame();
+
+  // Catch-the-star game.
+  const arena = document.getElementById('arena');
+  const star = document.getElementById('star');
+  const starScore = document.getElementById('starScore');
+  const startStar = document.getElementById('startStar');
+  let score = 0, seconds = 15, timer = null, running = false;
+  function relocateStar() {
+    const x = 18 + Math.random() * Math.max(1, arena.clientWidth - 36);
+    const y = 18 + Math.random() * Math.max(1, arena.clientHeight - 36);
+    star.style.left = x + 'px'; star.style.top = y + 'px';
+  }
+  star.addEventListener('click', function () {
+    if (!running) return;
+    score++;
+    starScore.textContent = 'Score: ' + score + ' · Time: ' + seconds + 's';
+    relocateStar();
+  });
+  startStar.addEventListener('click', function () {
+    clearInterval(timer);
+    score = 0; seconds = 15; running = true;
+    startStar.disabled = true; startStar.textContent = 'Playing…';
+    star.style.display = 'block'; relocateStar();
+    starScore.textContent = 'Score: 0 · Time: 15s';
+    timer = setInterval(function () {
+      seconds--;
+      starScore.textContent = 'Score: ' + score + ' · Time: ' + seconds + 's';
+      if (seconds <= 0) {
+        clearInterval(timer); running = false; star.style.display = 'none';
+        startStar.disabled = false; startStar.textContent = 'Play again';
+        starScore.textContent = 'Time is up! Final score: ' + score + ' ⭐';
+      }
+    }, 1000);
+  });
+});
+</script>
+</body>
+</html>
